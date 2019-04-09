@@ -1,5 +1,7 @@
 package com.javarush.task.task31.task3110;
 
+import com.javarush.task.task31.task3110.command.ExitCommand;
+
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.nio.file.Path;
@@ -17,5 +19,7 @@ public class Archiver {
         String file = reader.readLine();
         Path fileToZip = Paths.get(file);
         zipFile.createZip(fileToZip);
+        ExitCommand exitCommand = new ExitCommand();
+        exitCommand.execute();
     }
 }
