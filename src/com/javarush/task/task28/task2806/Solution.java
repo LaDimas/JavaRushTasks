@@ -1,5 +1,6 @@
 package com.javarush.task.task28.task2806;
 
+import java.util.concurrent.Executor;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
@@ -10,7 +11,22 @@ import java.util.concurrent.TimeUnit;
 public class Solution {
     public static void main(String[] args) throws InterruptedException {
         //Add your code here
-
+        ExecutorService service = Executors.newFixedThreadPool(5);
+        for(int i = 0; i < 10; i++) {
+            final int j = i;
+            service.submit(new Runnable() {
+                public void run()
+                {
+                    doExpensiveOperation(j + 1);
+                }
+            });
+        }
+        try {
+            service.shutdown();
+            service.awaitTermination(5,TimeUnit.SECONDS);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         /* output example
 pool-1-thread-2, localId=2
 pool-1-thread-1, localId=1
