@@ -23,9 +23,9 @@ public class ConsoleHelper {
         writeMessage(Dish.allDishesToString());
         writeMessage("Выберите блюдо или \"exit\"");
         String dish = "";
-        while (!dish.equals("exit")){
+        while (!dish.equalsIgnoreCase("exit")){
             dish = readString();
-            if (!dish.equals("exit")){
+            if (!dish.equalsIgnoreCase("exit")){
                 switch (dish){
                     case "Fish" : list.add(Dish.Fish);
                     break;

@@ -30,7 +30,7 @@ public class Tablet extends Observable {
                 '}';
     }
 
-    public Order createOrder(){
+    public void createOrder(){
         Order order = null;
 
         try {
@@ -45,6 +45,5 @@ public class Tablet extends Observable {
         } catch (Exception e ){
             e.printStackTrace();
         }
-        return order;
     }
 }
